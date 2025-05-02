@@ -1,4 +1,10 @@
+import { NextConfig } from 'next';
+
 export default {
+  experimental: {
+    typedEnv: true,
+    typedRoutes: true
+  },
   images: {
     remotePatterns: [
       {
@@ -13,4 +19,4 @@ export default {
       }
     ]
   }
-};
+} satisfies NextConfig;

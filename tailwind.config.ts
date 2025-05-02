@@ -10,6 +10,9 @@ export default {
   ],
   prefix: '',
   theme: {
+    fontFamily: {
+      sans: ['Public Sans ', 'sans-serif']
+    },
     container: {
       center: true,
       padding: '2rem',
@@ -74,5 +77,8 @@ export default {
       }
     }
   },
-  plugins: [require('tailwindcss-animate')]
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/container-queries')
+  ]
 } satisfies Config;

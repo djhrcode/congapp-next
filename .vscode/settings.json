@@ -1,4 +1,35 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.fontFamily": "JetBrains Mono, Spline Sans Mono",
+  "editor.fontLigatures": "'calt', 'liga', 'ss01', 'cv01' 2, 'cv31' 1",
+  "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.letterSpacing": -0.3,
+  "editor.letterSpacing": -0.3,
+  "editor.lineHeight": 1.65,
+  "editor.fontWeight": 100,
+  "editor.fontVariations": false,
+  "editor.defaultFormatter": "biomejs.biome",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(((?:[^()]|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "biome.enabled": true,
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(ts|js|tsx|jsx)$",
+        "cmd": "npx biome lint '${file}' --write"
+      }
+    ]
+  }
 }

@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS "assignments_scopes";
+DROP TABLE IF EXISTS "assignments_to_persons";
+DROP TABLE IF EXISTS "assignments";
+DROP TABLE IF EXISTS "congregation_attendance_reports";
+DROP TABLE IF EXISTS "congregation_monthly_reports";
+DROP TABLE IF EXISTS "roles_to_persons";
+DROP TABLE IF EXISTS "roles_to_permissions";
+DROP TABLE IF EXISTS "congregations";
+DROP TABLE IF EXISTS "departments";
+DROP TABLE IF EXISTS "groups";
+DROP TABLE IF EXISTS "permissions";
+DROP TABLE IF EXISTS "persons";
+DROP TABLE IF EXISTS "privileges";
+DROP TABLE IF EXISTS "reports";
+DROP TABLE IF EXISTS "roles";
+DROP TABLE IF EXISTS "reminders";
+DROP TABLE IF EXISTS "reminder_executions";
