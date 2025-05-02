@@ -8,9 +8,20 @@ import {
 	unique,
 	index,
 } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
+import { type InferInsertModel, type InferSelectModel, relations } from "drizzle-orm";
 import { INT_PK_STARTS_WITH } from "./_constants";
 import { Persons } from "./persons";
+
+/**
+ * Types definitions
+ */
+export interface RoleSelectDTO extends InferSelectModel<typeof Roles> {}
+
+export interface RoleInsertDTO extends InferInsertModel<typeof Roles> {}
+
+/**
+ * Database models
+ */
 
 type Roles =
 	| "elder"

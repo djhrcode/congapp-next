@@ -3,6 +3,7 @@ import {
 	type PersonSelectDTO,
 	Persons,
 	type ReportInsertDTO,
+	Reports,
 	type RoleInsertDTO,
 	Roles,
 	RolesToPersons,
@@ -92,22 +93,30 @@ interface CreatePersonData extends PersonInsertDTO {}
 
 interface CreatePersonWithRelations extends CreatePersonData {
 	reports?: ReportInsertDTO[];
-	roles?: RoleInsertDTO[];
+	roles?: RoleInsertDTO & { id: number }[];
 }
 
-async function createPerson(person: CreatePersonWithRelations) {
+const  createPerson(person: CreatePersonWithRelations) {
 	return asAction(async () => {
 		const filters: SQL[] = [];
 
-		const created = await db
+		const [personCreated] = await db
 			.insert(Persons)
 			.values({ ...person })
 			.returning({
 				id: Persons.id,
 			});
 
-		if (person.reports?.length > 0) {
-		}
+    if (person.reports?.length) {
+      await db.insert(Reports).values(person.reports)
+    }
+
+    if (person.roles?.length) {
+      await db.insert(RolesToPersons).values(person.roles.map((role) => ({
+        roleId: role.id,
+        personId: personCreated.id
+      })))
+    }
 
 		return {
 			total: rowsCount[0].count,
